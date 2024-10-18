@@ -1,3 +1,5 @@
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+
 # Book Topics Assigner
 
 This script assigns topics to books based on their descriptions using the OpenAI API. It processes an input CSV file containing book information, selects the most relevant topics from a predefined list, and outputs the results to a CSV file.
