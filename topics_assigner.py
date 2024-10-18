@@ -37,7 +37,7 @@ def load_topics_from_file(file_path):
             topics = [line.strip() for line in file if line.strip()]  # Remove empty lines or spaces
         return topics
     except FileNotFoundError:
-        logging.error(f"Topics file %s not found.", file_path)
+        logging.error("Topics file %s not found.", file_path)
         return []
 # Function to clean HTML tags from the description
 def clean_html(raw_html):
@@ -73,10 +73,11 @@ def get_topics_for_book(description, topics):
     Uses the OpenAI API to extract relevant topics based on a book description.
     """
     prompt = (
-        f"Based on the following book description, choose the most relevant topics from the provided "
-        f"topic list. Select between 3 and 10 topics that best match the book's description. "
-        f"Make sure to only pick topics from the provided list that are clearly applicable, and avoid "
-        f"including irrelevant ones.\n\nDescription: {description}\n\n"
+        f"Based on the following book description, choose the most relevant topics from the "
+        f"provided topic list. Select between 3 and 10 topics that best match the book's "
+        f"description. Make sure to only pick topics from the provided list that are "
+        f"clearly applicable, and avoid including irrelevant ones.\n\n"
+        f"Description: {description}\n\n"
         f"Topics List: {', '.join(topics)}\n\n"
         f"Return the chosen topics as a comma-separated list without any additional text."
     )
@@ -137,7 +138,7 @@ def get_last_processed_id(output_file):
     Retrieves the last processed ID from the output file to enable resuming.
     
     :param output_file: Path to the output CSV file
-    :return: The ID of the last processed row, or None if the file is empty
+    :return: The ID of the last processed row, or None if the file` is empty
     """
     if os.path.exists(output_file):
         with open(output_file, mode='r', encoding='utf-8') as output_csv:
@@ -221,7 +222,7 @@ def assign_topics(input_file, output_file, topics_file):
         for _, row in df.iterrows():
             process_and_write_row(row, topics, writer, output_csv)
 
-    logging.info(f"Processing completed. Results saved to %s", output_file)
+    logging.info("Processing completed. Results saved to %s", output_file)
 
 if __name__ == "__main__":
     # Parse command-line arguments
@@ -234,3 +235,4 @@ if __name__ == "__main__":
 
     # Call the main function with parsed arguments
     assign_topics(args.input_file, args.output_file, args.topics_file)
+    
